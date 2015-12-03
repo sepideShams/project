@@ -89,5 +89,5 @@ DATABASE = {
     'port': '5432',
     'username': 'postgres',
     'password': '',
-    'database': 'scrapy_project'
+    'database': 'EarthQuake'
 }

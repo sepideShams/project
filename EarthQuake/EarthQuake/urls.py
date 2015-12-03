@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
-from EQ_Analyzer.views import load_main_page
+from EQ_Analyzer.views import *
 
 admin.autodiscover()
 
@@ -16,5 +16,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'$', load_main_page),
+    url(r'^$', load_main_page),
+    url(r'^report/$',state_report)
 )

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        #report_table{
+
+            margin: 10% auto;
+            padding: 5%;
+            width: 50%;
+
+        }
+        td,th{
+           border: solid 2px brown;
+            padding: 2%;
+        }
+        #filter input{
+            display: inline;
+        }
+        #filter{
+
+        }
+    </style>
+
+    
+</head>
+<body>
+{% block map %}
+    <form id="filter">
+        State : <input type="text" name="state"  />
+        Magnitude : <input type="text" name="Magnitude">
+        Date from : <input type="date" name="fdate"> to  <input type="date" name="tdate">
+        <input type="submit" id ="search" value="search" >
+    </form>
+    <table id="report_table">
+    <tr>
+        <th>Origin time</th>
+        <th>Magnitude</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Depth</th>
+        <th>Region</th>
+    </tr>
+{% for eq in earthquakes %}
+    <tr class="record">
+        <td class="columns"> {{eq.Origin_Time}}</td>
+        <td class="columns"> {{ eq.Magnitude }}</td>
+        <td class="columns">{{ eq.Latitude }}</td>
+        <td class="columns"> {{ eq.Longitude }}</td>
+        <td class="columns"> {{ eq.Depth }}</td>
+        <td class="columns"> {{ eq.Region }}</td>
+
+    </tr>
+
+    {% endfor %}
+    </table>
+{% endblock %}
+
+</body>
+</html>

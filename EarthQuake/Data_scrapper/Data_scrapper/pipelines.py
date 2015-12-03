@@ -12,13 +12,13 @@ class EqPipeline(object):
 class irscPipeline(object):
     def __init__(self):
 
-        self.connection = psycopg2.connect(host='localhost', database='scrapy_project', user='postgres')
+        self.connection = psycopg2.connect(host='localhost', database='EarthQuake', user='postgres')
         self.cursor = self.connection.cursor()
 
     def process_item(self, item, IrscSpider):
         try:
 
-            self.cursor.execute('''INSERT INTO "IRSC" ("Origin_Time","Magnitude","Latitude","Longitude","Depth","Region") VALUES (%s,%s,%s,%s,%s,%s)''',
+            self.cursor.execute('''INSERT INTO "EQ_Analyzer_earthquake" ("Origin_Time","Magnitude","Latitude","Longitude","Depth","Region") VALUES (%s,%s,%s,%s,%s,%s)''',
                         (item.get('Origin_Time'), item.get('Magnitude'), item.get('Latitude'), item.get('Longitude'),
                          item.get('Depth'), item.get('Region')))
             self.connection.commit()
