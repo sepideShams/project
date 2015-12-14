@@ -4,30 +4,62 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="../static/css/Base.css" type="text/css">
+    {% block title %}
+        <title>Iran Earthquake Report</title>
+    {% endblock %}
+
 </head>
+{% load staticfiles %}
 {% block script %}
  script would be here
 {% endblock %}
+{% block css %}
 <style>
 
     #header{
         width: 100%;
         height: 50%;
-        background-color: deepskyblue;
-        padding: 2%;
+{#        background-color: deepskyblue;#}
+
+}
+    #header-bar{
+        width: 98%;
+        height: 20%;
+        font-size: 180%;
 }
 
+#right-menu{
+    background-color: deepskyblue;
+    width: 500px;
+    height: 100%;
+
+}
     </style>
+{% endblock %}
+
 <body>
 {% block header %}
 <div id = "header">
-    test header
+    EarthQuake Report
     </div>
+
+    <div id = "header-bar">
+
+    </div>
+{% endblock %}
+
+{% block right-menu %}
+<div id="right-menu">
+<img id="map" class="menu-icon" src="../static/image/map.jpg">
+<img id="report" class="menu-icon" src="../static/image/report.jpg">
+<img id="statistic" class="menu-icon" src="../static/image/statistic.png">
+    </div >
 {% endblock %}
 
 {% block map %}
     map
 {% endblock %}
+
 
 {% block footer %}
 

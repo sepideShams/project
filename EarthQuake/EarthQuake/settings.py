@@ -48,7 +48,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -59,30 +59,30 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = 'C:\Users\Win2\Desktop\project\EarthQuake\static'
+# STATIC_ROOT = 'C:\Users\Win2\Desktop\project\EarthQuake\static'
 BASEPATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '')
-STATIC_ROOT = BASEPATH + 'static/'
-SITE_URL = 'http://172.20.47.29:8000/'
-STATIC_URL = SITE_URL + 'static/'
+STATIC_ROOT = 'static/'
+SITE_URL = 'http://127.0.0.1:8000/'
+STATIC_URL = SITE_URL + '/static/'
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
+
+MEDIA_ROOT = BASEPATH + 'media/'
+STATICFILES_DIRS = (BASEPATH + '/static/',)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder')
+
+
+
 
 # Additional locations of static files
-STATICFILES_DIRS = (
 
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
 
 # List of finder classes that know how to find static files in
 # various locations.
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-)
+
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '4b!j4c+3l5!60*9312clwa^gpb$9y5zd#&amp;q$lvk!&amp;yskdbfab*'

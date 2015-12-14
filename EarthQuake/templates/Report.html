@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <style>
 
         #report_table{
@@ -24,16 +25,35 @@
         }
     </style>
 
-    
+    <script>
+
+        $(document).ready(function(){
+        $("#search").click(function(){
+            $.ajax({
+                url:'/report/',
+                data: {'state' :$('#state').val(),'magnitude': $('#magnitude').val(),'fdate':$('#fdate').val(),'tdate':$('#tdate').val()},
+                method : 'get',
+                success: function(data){
+
+                    $("#frame").html(data);
+
+                }
+            });
+
+        });
+});
+
+    </script>
+
 </head>
 <body>
 {% block map %}
-    <form id="filter">
-        State : <input type="text" name="state"  />
-        Magnitude : <input type="text" name="Magnitude">
-        Date from : <input type="date" name="fdate"> to  <input type="date" name="tdate">
-        <input type="submit" id ="search" value="search" >
-    </form>
+    <div id="filter">
+        State : <input type="text" name="state" id="state"  />
+        Magnitude : <input type="text" name="Magnitude" id="magnitude">
+        Date from : <input type="date" name="fdate" id="fdate"> to  <input type="date" name="tdate" id="tdate">
+        <input type="button" id ="search" value="search" >
+    </div>
     <table id="report_table">
     <tr>
         <th>Origin time</th>
@@ -42,6 +62,7 @@
         <th>Longitude</th>
         <th>Depth</th>
         <th>Region</th>
+        <th>Details</th>
     </tr>
 {% for eq in earthquakes %}
     <tr class="record">
@@ -51,6 +72,7 @@
         <td class="columns"> {{ eq.Longitude }}</td>
         <td class="columns"> {{ eq.Depth }}</td>
         <td class="columns"> {{ eq.Region }}</td>
+        <td class="columns"> <a href="?eq={{ eq.id }}">Show more details</a> </td>
 
     </tr>
 
