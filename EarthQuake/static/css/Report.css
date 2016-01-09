@@ -1,0 +1,30 @@
+
+/*/////////////////////////////////////////////////////////////////////////*/
+        #report_table{
+
+            margin: 5% auto;
+            width: 65%;
+            border: double;
+
+        }
+        th{
+           background-color: #66e0ff;
+            padding: 1% 2% 1% 1%;
+            width: inherit;
+
+        }
+        td{
+            padding: 1%;
+        }
+        tr:nth-child(even) {
+            background-color: #99ebff
+        }
+        #filter{
+            margin: 5% 15% auto;
+            /*padding: 50px;*/
+
+        }
+        #filter input{
+            display: inline;
+            margin: 7px;
+        }

@@ -12,8 +12,8 @@ def load_main_page(request):
     eq_pos = EarthQuake.objects.filter(Origin_Time__contains=today)
     if request.GET.get("eq"):
         eq = request.GET.get("eq")
-        show_eq_details(request, eq)
-    if request.is_ajax():
+        return show_eq_details(request, eq)
+    elif request.is_ajax():
         content = request.GET.get('content')
         if content == "map":
             return HttpResponse("<script>window.location.replace('http://127.0.0.1:8000/');</script>")
@@ -26,28 +26,27 @@ def load_main_page(request):
 
 
 def state_report(request, is_filter=True):
+    report = EarthQuake.objects.all()
     if request.is_ajax() and is_filter:
         query = Q()
-        if request.GET.get('state'):
-            state = request.GET.get('state')
+        if request.POST.get('state'):
+            state = request.POST.get('state')
             query &= (Q(Region__contains=state))
-        if request.GET.get('magnitude'):
-            magnitude = request.GET.get('magnitude')
+        if request.POST.get('magnitude'):
+            magnitude = request.POST.get('magnitude')
             query &= (Q(Magnitude=magnitude))
-        if request.GET.get('fdate'):
-            from_date = request.GET.get('fdate')
+        if request.POST.get('fdate'):
+            from_date = request.POST.get('fdate')
             query &= (Q( Origin_Time__gte=from_date))
-        if request.GET.get('tdate'):
-            to_date = request.GET.get('tdate')
+        if request.POST.get('tdate'):
+            to_date = request.POST.get('tdate')
             query &= (Q(Origin_Time__lte=to_date))
         report = EarthQuake.objects.filter(query)
-    else:
-        report = EarthQuake.objects.all()
     return render(request, 'Report.html', {'earthquakes': report,'content':"report"})
 
 
 def show_eq_details(request, eq):
-    eq_reference = EarthQuake.objects.filter(id=eq)
+    eq_reference = EarthQuake.objects.filter(id=eq)[0]
     return render(request, 'EQdetails.html', {'eq': eq_reference})
 
 

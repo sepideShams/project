@@ -2,8 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="../static/css/Base.css" type="text/css">
+
     {% block title %}
         <title>Iran Earthquake Report</title>
     {% endblock %}
@@ -14,47 +13,33 @@
  script would be here
 {% endblock %}
 {% block css %}
-<style>
+  <link rel="stylesheet" href="../static/css/Base.css" type="text/css">
 
-    #header{
-        width: 100%;
-        height: 50%;
-{#        background-color: deepskyblue;#}
-
-}
-    #header-bar{
-        width: 98%;
-        height: 20%;
-        font-size: 180%;
-}
-
-#right-menu{
-    background-color: deepskyblue;
-    width: 500px;
-    height: 100%;
-
-}
-    </style>
 {% endblock %}
 
 <body>
 {% block header %}
-<div id = "header">
-    EarthQuake Report
-    </div>
-
-    <div id = "header-bar">
-
-    </div>
+        <div id="first-div">
+            <img src="../static/image/head.jpg" style="width:100%;height:100px"/>
+        </div>
 {% endblock %}
 
-{% block right-menu %}
-<div id="right-menu">
-<img id="map" class="menu-icon" src="../static/image/map.jpg">
-<img id="report" class="menu-icon" src="../static/image/report.jpg">
-<img id="statistic" class="menu-icon" src="../static/image/statistic.png">
-    </div >
-{% endblock %}
+{#////////////  menu bar /////////////////#}
+<ul  id="menu">
+    <li> <a class="menu-link" href="/ ">Home </a>  </li>
+    <li> <a class="menu-link" href="report"> Report </a> </li>
+    <li> <a class="menu-link"  href="statistics"> Statistics </a> </li>
+</ul>
+
+{#// /////////////////////////////#}
+{##}
+{#{% block right-menu %}#}
+{#<div id="right-menu">#}
+{#<img id="map" class="menu-icon" src="../static/image/map.jpg">#}
+{#<img id="report" class="menu-icon" src="../static/image/report.jpg">#}
+{#<img id="statistic" class="menu-icon" src="../static/image/statistic.png">#}
+{#    </div >#}
+{#{% endblock %}#}
 
 {% block map %}
     map

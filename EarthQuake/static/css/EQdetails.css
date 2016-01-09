@@ -1,0 +1,22 @@
+
+#googleMap{
+        margin: 60px ;
+        position: absolute;
+        display: block;
+    }
+
+#details {
+    display: block;
+    margin: 40px 500px;
+    width: auto;
+    height: 400px;
+    border: double;
+    position: relative;
+    background-color: #ccffcc;
+
+}
+
+.detail{
+    padding: 20px;
+}
+

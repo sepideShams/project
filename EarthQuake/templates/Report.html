@@ -1,41 +1,25 @@
+{% extends  "Base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+{% block title %}
+  <title> Report </title>
+{% endblock %}
+  {% block script %}
         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <style>
-
-        #report_table{
-
-            margin: 10% auto;
-            padding: 5%;
-            width: 50%;
-
-        }
-        td,th{
-           border: solid 2px brown;
-            padding: 2%;
-        }
-        #filter input{
-            display: inline;
-        }
-        #filter{
-
-        }
-    </style>
-
     <script>
-
         $(document).ready(function(){
         $("#search").click(function(){
+            alert("click!!!!!");
             $.ajax({
+                type: 'POST',
                 url:'/report/',
-                data: {'state' :$('#state').val(),'magnitude': $('#magnitude').val(),'fdate':$('#fdate').val(),'tdate':$('#tdate').val()},
-                method : 'get',
+                data: {'state' :$('#state').val(),'magnitude': $('#magnitude').val(),'fdate':$('#fdate').val(),'tdate':$('#tdate').val(),'csrfmiddlewaretoken':'{{csrf_token}}'},
+
                 success: function(data){
 
-                    $("#frame").html(data);
+                    $("body").html(data);
 
                 }
             });
@@ -44,11 +28,18 @@
 });
 
     </script>
+  {% endblock %}
+
+    {% block css %}
+        <link rel="stylesheet" href="../static/css/Report.css" type="text/css">
+  <link rel="stylesheet" href="../static/css/Base.css" type="text/css">
+
+    {% endblock %}
 
 </head>
 <body>
 {% block map %}
-    <div id="filter">
+<div id="filter">
         State : <input type="text" name="state" id="state"  />
         Magnitude : <input type="text" name="Magnitude" id="magnitude">
         Date from : <input type="date" name="fdate" id="fdate"> to  <input type="date" name="tdate" id="tdate">
@@ -58,11 +49,11 @@
     <tr>
         <th>Origin time</th>
         <th>Magnitude</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
-        <th>Depth</th>
-        <th>Region</th>
-        <th>Details</th>
+        <th>Latitude </th>
+        <th>Longitude </th>
+        <th>Depth    </th>
+        <th>Region    </th>
+        <th>Details   </th>
     </tr>
 {% for eq in earthquakes %}
     <tr class="record">

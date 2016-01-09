@@ -1,10 +1,119 @@
+{% extends  "Base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    {% block title %}
+        <title>Earthqauke details </title>
+    {% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="../static/css/Base.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/EQdetails.css" type="text/css">
+    {% endblock %}
+{% block script %}
+
+         <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script
+src="http://maps.googleapis.com/maps/api/js">
+
+</script>
+    <script>
+
+        function setMarker(map){
+
+
+    var pos = new google.maps.LatLng({{ eq.Latitude }},{{ eq.Longitude }});
+        var marker=new google.maps.Marker({position:pos});
+
+    marker.setMap(map);
+
+
+}
+function initialize() {
+    alert({{ eq.Latitude }});
+  var mapProp = {
+
+    center:new google.maps.LatLng({{ eq.Latitude }},{{ eq.Longitude }}),
+    zoom:10,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var Map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    setMarker(Map)
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+{#var myCity = new google.maps.Circle({#}
+{#  center:tehran,#}
+{#  radius:20000,#}
+{#  strokeColor:"#0000FF",#}
+{#  strokeOpacity:0.8,#}
+{#  strokeWeight:2,#}
+{#  fillColor:"#0000FF",#}
+{#  fillOpacity:0.4#}
+{#    #}
+{# });#}
+
+////////////////////////////////////////////////////////////////////////
+///                         JQUERY                                   ///
+////////////////////////////////////////////////////////////////////////
+
+$(document).ready(function(){
+
+    function setColor(){
+        var magnitude ={{ eq.Magnitude }};
+        alert(magnitude);
+        if (magnitude < 3 ){
+
+        $("#details").css("background-color","#ffff80");
+        }else {
+            if (magnitude>3 && magnitude <= 5){
+                $("#details").css("background-color","#ffa31a");
+            }
+            else{
+                $("#details").css("background-color","#ff704d");
+            }
+        }
+
+    };
+    setColor();
+});
+        </script>
+
+{% endblock %}
 </head>
 <body>
+
+
+
+
+{#/////////////////////#}
+{#//   Map section   //#}
+{#////////////////////#}
+{% block map %}
+<div>
+  <div id="googleMap" style="width: 350px; height: 350px;"></div>
+    </div>
+
+
+    {#/////////////////////#}
+{#// Detail section //#}
+{#///////////////////#}
+
+
+<div id="details">
+<ul>
+   <li class="detail"> Origin Time  : {{ eq.Origin_Time }} </li>
+    <li class="detail">Region : {{ eq.Region }}</li>
+    <li class="detail">Magnitude : {{ eq.Magnitude }}</li>
+    <li class="detail">Latitude : {{ eq.Latitude }}</li>
+    <li class="detail">Longitude : {{ eq.Longitude }}</li>
+    </ul>
+
+    </div>
+{% endblock %}
+
+
 
 </body>
 </html>
