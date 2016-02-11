@@ -17,8 +17,10 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', load_main_page),
-    url(r'^report/$',state_report),
-
+    url(r'^report/$', state_report),
+    url(r'^excel/$', download_excel),
+    url(r'^area/$',prone_areas),
+    url(r'^statistic/$',statistic)
 )
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns

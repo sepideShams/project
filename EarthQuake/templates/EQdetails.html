@@ -30,7 +30,7 @@ src="http://maps.googleapis.com/maps/api/js">
 
 }
 function initialize() {
-    alert({{ eq.Latitude }});
+{#    alert({{ eq.Latitude }});#}
   var mapProp = {
 
     center:new google.maps.LatLng({{ eq.Latitude }},{{ eq.Longitude }}),
@@ -62,7 +62,6 @@ $(document).ready(function(){
 
     function setColor(){
         var magnitude ={{ eq.Magnitude }};
-        alert(magnitude);
         if (magnitude < 3 ){
 
         $("#details").css("background-color","#ffff80");
@@ -91,10 +90,10 @@ $(document).ready(function(){
 {#//   Map section   //#}
 {#////////////////////#}
 {% block map %}
+    <div id="main">
 <div>
-  <div id="googleMap" style="width: 350px; height: 350px;"></div>
+  <div id="googleMap"></div>
     </div>
-
 
     {#/////////////////////#}
 {#// Detail section //#}
@@ -103,13 +102,14 @@ $(document).ready(function(){
 
 <div id="details">
 <ul>
-   <li class="detail"> Origin Time  : {{ eq.Origin_Time }} </li>
+
     <li class="detail">Region : {{ eq.Region }}</li>
-    <li class="detail">Magnitude : {{ eq.Magnitude }}</li>
+    <li class="detail">Depth : {{ eq.Depth }} </li>
     <li class="detail">Latitude : {{ eq.Latitude }}</li>
     <li class="detail">Longitude : {{ eq.Longitude }}</li>
     </ul>
 
+    </div>
     </div>
 {% endblock %}
 

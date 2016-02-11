@@ -11,7 +11,7 @@
     <script>
         $(document).ready(function(){
         $("#search").click(function(){
-            alert("click!!!!!");
+{#            alert("click!!!!!");#}
             $.ajax({
                 type: 'POST',
                 url:'/report/',
@@ -25,6 +25,13 @@
             });
 
         });
+            $("#excel").click(function(){
+{#                $.ajax({#}
+{#                    type: 'GET',#}
+{#                    url: '?excel=true'#}
+{#                });#}
+                window.open("/excel");
+            });
 });
 
     </script>
@@ -39,36 +46,25 @@
 </head>
 <body>
 {% block map %}
+    <input type="button" id="excel" value="Excel Report">
 <div id="filter">
         State : <input type="text" name="state" id="state"  />
         Magnitude : <input type="text" name="Magnitude" id="magnitude">
         Date from : <input type="date" name="fdate" id="fdate"> to  <input type="date" name="tdate" id="tdate">
         <input type="button" id ="search" value="search" >
     </div>
-    <table id="report_table">
-    <tr>
-        <th>Origin time</th>
-        <th>Magnitude</th>
-        <th>Latitude </th>
-        <th>Longitude </th>
-        <th>Depth    </th>
-        <th>Region    </th>
-        <th>Details   </th>
-    </tr>
-{% for eq in earthquakes %}
-    <tr class="record">
-        <td class="columns"> {{eq.Origin_Time}}</td>
-        <td class="columns"> {{ eq.Magnitude }}</td>
-        <td class="columns">{{ eq.Latitude }}</td>
-        <td class="columns"> {{ eq.Longitude }}</td>
-        <td class="columns"> {{ eq.Depth }}</td>
-        <td class="columns"> {{ eq.Region }}</td>
-        <td class="columns"> <a href="?eq={{ eq.id }}">Show more details</a> </td>
+<div class="data-container">
+{% for eq in earthquakes reversed%}
+    <div class="report-box">
+          <div class="data" id="Region"> {{ eq.Region }}</div>
+          <div class="data" id="Magnitude"> {{ eq.Magnitude }}</div><br>
+          <div class="data" id="Origin_time"> {{eq.Origin_Time}}</div>
+          <div class="btn"> <a href="/?eq={{ eq.id }}">Details</a> </div>
 
-    </tr>
 
+    </div>
     {% endfor %}
-    </table>
+</div>
 {% endblock %}
 
 </body>

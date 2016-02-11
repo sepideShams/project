@@ -1,30 +1,110 @@
 
 /*/////////////////////////////////////////////////////////////////////////*/
-        #report_table{
-
-            margin: 5% auto;
-            width: 65%;
-            border: double;
-
-        }
-        th{
-           background-color: #66e0ff;
-            padding: 1% 2% 1% 1%;
-            width: inherit;
+        .report-box{
+            display: inline-block;
+            margin : 15px;
+            padding: 25px;
+            /*background-color: darkgray;*/
+            width: 270px;
+            height: 350px
 
         }
-        td{
-            padding: 1%;
+        .data-container div{
+             color: white;
         }
-        tr:nth-child(even) {
-            background-color: #99ebff
+        .data-container div:hover{
+
+            background-color: #e6e6e6;
+        }
+        .data-container div:hover .data{
+
+           color: black;
+        }
+        .data{
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .data-container{
+            padding: 60px 155px;
         }
         #filter{
-            margin: 5% 15% auto;
+            margin: 2% 10% 10px;
             /*padding: 50px;*/
-
+            color: white;
+            /*visibility: hidden;*/
         }
         #filter input{
             display: inline;
             margin: 7px;
         }
+
+        body{
+            background-image:url("../image/Wiki-background.jpg");
+        }
+
+        #Region{
+            font-size: medium;
+            /*margin: auto 50px 30px 0;*/
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #Origin_time{
+            margin-bottom: 25px;
+        }
+        #Magnitude{
+            font-size: xx-large;
+        }
+
+
+        .btn {
+            float: inherit;
+            text-decoration: none;
+  background: #ff5858;
+  background-image: -webkit-linear-gradient(top, #ff5858, #ff6666);
+  background-image: -moz-linear-gradient(top, #ff5858, #ff6666);
+  background-image: -ms-linear-gradient(top, #ff5858, #ff6666);
+  background-image: -o-linear-gradient(top, #ff5858, #ff6666);
+  background-image: linear-gradient(to bottom, #ff5858, #ff6666);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+    margin: 95px auto;
+  width: 70px;
+
+}
+
+.btn:hover {
+  background: #ff3333;
+  background-image: -webkit-linear-gradient(top, #ff3333, #ff5858);
+  background-image: -moz-linear-gradient(top, #ff3333, #ff5858);
+  background-image: -ms-linear-gradient(top, #ff3333, #ff5858);
+  background-image: -o-linear-gradient(top, #ff3333, #ff5858);
+  background-image: linear-gradient(to bottom, #ff3333, #ff5858);
+  text-decoration: none;
+}
+
+.btn a{
+    color : white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+#excel {
+	background-color:#ff5858;
+	color:#fff;
+	font-family:'Helvetica Neue',sans-serif;
+	font-size:18px;
+	line-height:30px;
+	border-radius:20px;
+	-webkit-border-radius:20px;
+	/*-moz-border-radius:20px;*/
+	border:0;
+	text-shadow:#ff5858 0 -1px 0;
+	width:120px;
+	height:32px;
+    margin:20px;
+    float: right;
+}

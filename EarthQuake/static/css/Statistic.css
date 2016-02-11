@@ -1,0 +1,18 @@
+body{
+    background: url("../image/Wiki-background.jpg") no-repeat;
+}
+
+.month{
+    background-color: #1a1a4c;
+    text-decoration: none;
+    text-align: center;
+    width: 120px;
+    height: 100px;
+    padding: 10px ;
+    color: white;
+}
+
+#main{
+        margin-top: 20px;
+    display: inline-block;
+}

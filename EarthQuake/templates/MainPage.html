@@ -31,7 +31,7 @@ marker.setMap(map);
 function initialize() {
   var mapProp = {
     center:new google.maps.LatLng(32.0000,53.0000),
-    zoom:5,
+    zoom:4,
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
   var Map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
@@ -100,9 +100,10 @@ $(document).ready(function(){
 
 <body>
     {% block map %}
-
+<div class="main">
         <div id ="frame">
-            <div id="googleMap" style="width: 500px; height: 500px; margin: 50px 70px"></div>
+            <div id="googleMap"></div>
+        </div>
         </div>
     {% endblock %}
 </body>

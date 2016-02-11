@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Statistics</title>
+    {% endblock %}
+
+    {% block css %}
+                <link rel="stylesheet" href="../static/css/Statistic.css" type="text/css">
+        <link rel="stylesheet" href="../static/css/Base.css" type="text/css">
+{% endblock %}
+{% block script %}
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+    $(document).ready(function(){
+                $(".month").click(function(){
+{#                    alert($(this).attr('id'));#}
+                    $.ajax({
+                                url:'/statistic/',
+                                data : {'month':$(this).html(),'number':$(this).attr('id')},
+                                method : 'get',
+                                success:function(data){
+                                    $("#graph").empty();
+                                    $("body").append(data)
+                                }
+                            }
+                    )
+                });
+                var first_part=0,seconed_part=0,third_part=0,fourth_part=0;
+                {% for d  in data %}
+                    {% if d.Magnitude < 2 %}
+                        first_part++;
+                    {% elif d.Magnitude < 4 %}
+                        seconed_part++;
+                    {% elif d.Magnitude < 5 %}
+                        third_part++;
+                    {% else %}
+                        fourth_part++;
+                    {% endif %}
+                {% endfor %}
+{#                $("#graph").css("background:white;border-left:2px black;border-bottom:2px black;");#}
+{#                $("#graph").append("<div id='first' style='background=red;width=10px;'>test</div>");#}
+            });
+    </script>
+{% endblock %}
+</head>
+<body>
+{% block map %}
+    <table id="main">
+        <tr>
+    <td><div class="month" id="1">January</div></td>
+    <td><div class="month" id="2">February</div></td>
+    <td><div class="month" id="3">March</div></td>
+            </tr>
+        <tr>
+    <td><div class="month" id="4">April</div></td>
+    <td><div class="month" id="5">May</div></td>
+    <td><div class="month" id="6">June</div></td>
+            </tr>
+        <tr>
+    <td><div class="month" id="7">July</div></td>
+    <td><div class="month" id="8">August</div></td>
+    <td><div class="month" id="9">September</div></td>
+        </tr>
+        <tr>
+    <td><div class="month" id="10">October</div></td>
+    <td><div class="month" id="11">November</div></td>
+    <td><div class="month" id="12">December</div></td>
+    </tr>
+
+    </table>
+{% endblock %}
+
+</body>
+</html>

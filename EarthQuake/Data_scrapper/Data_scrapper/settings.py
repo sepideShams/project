@@ -63,6 +63,8 @@ NEWSPIDER_MODULE = 'Data_scrapper.spiders'
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'Data_scrapper.pipelines.irscPipeline': 300,
+    # 'Data_scrapper.pipelines.CountPipeline':300,
+
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

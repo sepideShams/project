@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+    $(document).ready(function(){
+                var first_part=5,seconed_part=0,third_part=0,fourth_part=0;
+                {% for d  in data %}
+{#                    alert({{ d.Magnitude }})#}
+                    {% if d.Magnitude < '2' %}
+                        first_part++;
+                    {% elif d.Magnitude < '4' %}
+                        seconed_part++;
+                    {% elif d.Magnitude < '5'%}
+                        third_part++;
+                    {% else %}
+                        fourth_part++;
+                    {% endif %}
+                {% endfor %}
+        $("#graph").append("<div id='fourth' class='g' style='background:#ff5c33;margin:10px;width:40px;display:inline-block;height:"+(fourth_part)+"px;position: relative;bottom:0;margin-bottom:0'></div>");
+        $("#graph").append("<div id='third' class='g' style='background:#ff9933;margin:10px;width:40px;display:inline-block;height:"+(third_part)+"px;position: relative;bottom:0;margin-bottom:0'></div>");
+        $("#graph").append("<div id='second' class='g' style='background:#ffcc00;margin:10px;width:40px;display:inline-block;height:"+(seconed_part)+"px;position: relative;bottom:0;margin-bottom:0'></div>");
+        $("#graph").append("<div id='first' class='g' style='background:#008000;margin:10px;width:40px;display:inline-block;height:"+(first_part)+"px;position: relative;bottom:0;margin-bottom:0'></div>");
+
+
+            });
+
+        </script>
+</head>
+<body>
+<div id="graph" style="background-color:white;border-bottom:3px;border-left:3px;border-color: black;width:600px;height:auto;display: inline-block;position: absolute;margin:50px 200px;padding: 2px"></div>
+</body>
+</html>

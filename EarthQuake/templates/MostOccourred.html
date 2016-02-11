@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends 'Base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Most occourred  </title>
+    {% endblock %}
+    {% block css %}
+        <link rel="stylesheet" href="../static/css/MostOccourred.css" type="text/css">
+        <link rel="stylesheet" href="../static/css/Base.css" type="text/css">
+    {% endblock %}
+
+{% block  script%}
+
+{% endblock %}
+</head>
+<body>
+{% block map %}
+    <div id="main">
+        {% for a in area %}
+            <div class="area" id="{{ forloop.counter }}">{{ a }}</div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+
+</body>
+</html>
