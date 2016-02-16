@@ -11,7 +11,28 @@ src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBQTLDCekz5tS4yQYmjYqPyRa8a
 </script>
 
 <script>
+function getDates() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
 
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+
+    today = yyyy + '-' + mm + '-' + dd;
+{#    x.innerHTML(today);#}
+    var x= document.getElementById('status');
+    alert(today);
+{#    x.innerHTML += "<div id='date'>" + today +"</div>";#}
+
+}
+getDates();
 
 ////////////////////////////////////////////////////////////////////
 ///                          GOOGLE MAP                          ///
@@ -40,16 +61,6 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
-{#var myCity = new google.maps.Circle({#}
-{#  center:tehran,#}
-{#  radius:20000,#}
-{#  strokeColor:"#0000FF",#}
-{#  strokeOpacity:0.8,#}
-{#  strokeWeight:2,#}
-{#  fillColor:"#0000FF",#}
-{#  fillOpacity:0.4#}
-{#    #}
-{# });#}
 
 ////////////////////////////////////////////////////////////////////////
 ///                         JQUERY                                   ///
@@ -79,11 +90,71 @@ $(document).ready(function(){
             });
 
         });
+        var x = document.getElementById('status')
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+        x.innerHTML += "Geolocation is not supported by this browser.";
+    }
+    function showPosition(position) {
+        x.innerHTML += "<div id='position'>Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude+"</div>";
+}
+
 
 });
-///////////////////////////////////////////////////////////////////////////////////
 
+////);///////////////////////////////////////////////////////////////////////////////
 
+      function displayLocation(latitude,longitude){
+        var request = new XMLHttpRequest();
+
+        var method = 'GET';
+        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+latitude+','+longitude+'&sensor=true';
+        var async = true;
+
+        request.open(method, url, async);
+        request.onreadystatechange = function(){
+          if(request.readyState == 4 && request.status == 200){
+            var data = JSON.parse(request.responseText);
+            var address = data.results[0];
+              var x  = document.getElementById('status');
+            x.innerHTML+="<div id='address'>"+(address.formatted_address)+"</div>";
+          }
+        };
+        request.send();
+      };
+
+      var successCallback = function(position){
+        var x = position.coords.latitude;
+        var y = position.coords.longitude;
+        displayLocation(x,y);
+      };
+
+      var errorCallback = function(error){
+        var errorMessage = 'Unknown error';
+        switch(error.code) {
+          case 1:
+            errorMessage = 'Permission denied';
+            break;
+          case 2:
+            errorMessage = 'Position unavailable';
+            break;
+          case 3:
+            errorMessage = 'Tehran';
+            break;
+        }
+          var x = document.getElementById('status');
+        x.innerHTML+="<div id='errot'>"+(errorMessage)+"</div>";
+      };
+
+      var options = {
+        enableHighAccuracy: true,
+        timeout: 1000,
+        maximumAge: 0
+      };
+
+      navigator.geolocation.getCurrentPosition(successCallback,errorCallback,options);
 
 
 </script>
@@ -103,6 +174,9 @@ $(document).ready(function(){
 <div class="main">
         <div id ="frame">
             <div id="googleMap"></div>
+        </div>
+        <div id="status">
+
         </div>
         </div>
     {% endblock %}

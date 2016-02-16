@@ -6,7 +6,9 @@
     color: white;
     font-size:xx-large;
 }
-
+ul{
+    list-style-type: none;
+}
 
     #header-bar{
         width: 98%;
@@ -20,7 +22,8 @@
 
         list-style-type: none;
         margin: 0;
-        padding: 0;
+        padding-top: 15px;
+        /*padding: 0;*/
         font-size:medium;
         color: white;
         background-color: black;
@@ -30,7 +33,7 @@
     #menu li{
         display: inline;
 
-        padding: 10px;
+        /*padding: 10px;*/
         margin: 10px;
     }
     .menu-link {
@@ -39,10 +42,7 @@
                 padding: 10px;
     }
 
+li a :active {
+ background-color: #d14836;
+ }
 
-#right-menu{
-    background-color: #1a1a4c;
-    width: 500px;
-    height: 100%;
-
-}

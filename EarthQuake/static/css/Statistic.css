@@ -1,15 +1,28 @@
 body{
     background: url("../image/Wiki-background.jpg") no-repeat;
 }
+td{
+ background-color: rgba(1,1,1,.4);
+}
 
 .month{
-    background-color: #1a1a4c;
+
     text-decoration: none;
     text-align: center;
     width: 120px;
-    height: 100px;
-    padding: 10px ;
+    height: 77px;
+    /*padding: 5px ;*/
     color: white;
+}
+.num{
+    align-self: center;
+    font-size: xx-large;
+    color: white;
+    text-align: center;
+    margin-bottom: 5px;
+}
+td :hover{
+    transform: scale(1.5, 1.5);
 }
 
 #main{

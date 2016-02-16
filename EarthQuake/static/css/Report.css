@@ -4,7 +4,8 @@
             display: inline-block;
             margin : 15px;
             padding: 25px;
-            /*background-color: darkgray;*/
+            background: rgba(245, 245, 245, 0.2);
+            /*opacity:0.2;*/
             width: 270px;
             height: 350px
 
@@ -12,9 +13,9 @@
         .data-container div{
              color: white;
         }
-        .data-container div:hover{
+        .report-box:hover{
 
-            background-color: #e6e6e6;
+            background-color: rgba(245, 245, 245, 0.5);
         }
         .data-container div:hover .data{
 
@@ -28,10 +29,11 @@
             padding: 60px 155px;
         }
         #filter{
-            margin: 2% 10% 10px;
-            /*padding: 50px;*/
+            margin: 1% 10px  10px;
+            padding: 25px;
             color: white;
-            /*visibility: hidden;*/
+            background-color: rgba(60, 64, 55, 0.4);
+
         }
         #filter input{
             display: inline;
@@ -93,7 +95,7 @@
 }
 
 #excel {
-	background-color:#ff5858;
+	background-color:seagreen;
 	color:#fff;
 	font-family:'Helvetica Neue',sans-serif;
 	font-size:18px;
@@ -102,9 +104,26 @@
 	-webkit-border-radius:20px;
 	/*-moz-border-radius:20px;*/
 	border:0;
-	text-shadow:#ff5858 0 -1px 0;
+	text-shadow:seagreen 0 -1px 0;
 	width:120px;
 	height:32px;
     margin:20px;
     float: right;
+}
+
+#search{
+    background-color:lightslategrey;
+	color:#fff;
+	font-family:'Helvetica Neue',sans-serif;
+	font-size:18px;
+	line-height:30px;
+	border-radius:20px;
+	-webkit-border-radius:20px;
+	/*-moz-border-radius:20px;*/
+	border:0;
+	text-shadow:lightslategrey 0 -1px 0;
+	width:120px;
+	height:32px;
+    margin:20px;
+    /*float: right;*/
 }

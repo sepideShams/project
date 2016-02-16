@@ -19,8 +19,8 @@
 
 <body>
 {% block header %}
-        <div id="first-div">
-            <img src="../static/image/head.jpg" style="width:100%;height:100px"/>
+        <div id="first-div" style="background-color: #ff5858;width: auto">
+            <img src="../static/image/head.jpg" style="height:100px;background-color: #ff5858"/>
         </div>
 {% endblock %}
 
@@ -30,6 +30,13 @@
     <li> <a class="menu-link" href="/report"> Report </a> </li>
     <li> <a class="menu-link"  href="/statistic"> Statistics </a> </li>
     <li> <a class="menu-link" href="/area"> Prone areas </a></li>
+</ul>
+<ul>
+    <li class="selected-menu"> </li>
+    <li class="selected-menu"> </li>
+    <li class="selected-menu"> </li>
+    <li class="selected-menu"> </li>
+
 </ul>
 
 {#// /////////////////////////////#}

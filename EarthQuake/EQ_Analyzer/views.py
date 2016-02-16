@@ -3,6 +3,7 @@
 
 import StringIO
 import xlsxwriter
+# import pandas
 from models import EarthQuake
 from django.db.models import Q
 from django.db import connection
@@ -10,8 +11,7 @@ from django.http import HttpResponse
 from django.utils.translation import ugettext
 from django.utils.datetime_safe import datetime
 from django.shortcuts import render_to_response, render
-
-
+# from django.contrib.gis.utils import GeoIP
 
 def load_main_page(request):
     today = datetime.today().date()
@@ -139,12 +139,11 @@ def prone_areas(self):
     for record in cursor:
         counter += 1
         if counter < 6:
-            print record[0].encode("utf-8")
-            print record[1]
+            # print record[0].encode("utf-8")
+            # print record[1]
             area[record[0].encode("utf-8").replace("\xc2\xa0", "")] = record[1]
         else:
             break
-    print(area)
     return render_to_response('MostOccourred.html', context={'area': area})
 
 # ################## Statistic ####################

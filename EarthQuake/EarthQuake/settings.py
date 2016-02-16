@@ -1,5 +1,11 @@
 # Django settings for EarthQuake project.
 import os
+from django.utils.translation import ugettext_lazy as _
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('fa', _('Farsi')),
+)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -11,12 +17,13 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'EarthQuake',                      # Or path to database file if using sqlite3.
-        'USER': 'postgres',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'EarthQuake',  # Or path to database file if using sqlite3.
+        'USER': 'postgres',  # Not used with sqlite3.
+        'PASSWORD': '',  # Not used with sqlite3.
+        'HOST': 'localhost',  # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '5432',  # Set to empty string for default. Not used with sqlite3.
     }
 }
 # Hosts/domain names that are valid for this site; required if DEBUG is False
@@ -91,7 +98,7 @@ SECRET_KEY = '4b!j4c+3l5!60*9312clwa^gpb$9y5zd#&amp;q$lvk!&amp;yskdbfab*'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+        # 'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -100,6 +107,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -113,7 +123,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "C:/Users/Win2/Desktop/project/EarthQuake/templates",
+    "templates",
 )
 
 INSTALLED_APPS = (
@@ -158,3 +168,24 @@ LOGGING = {
         },
     }
 }
+
+TEMPLATES = [
+    {
+        'DIRS': ['templates'],
+        # TEMPLATE_DEBUG: DEBUG,
+        'APP_DIRS': True,
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.i18n',
+                # 'django.template.context_processors.debug',
+                # 'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                # 'django.contrib.messages.context_processors.messages',
+            ]
+        },
+    },
+]
+LOCALE_PATHS = (
+    os.path.join(BASEPATH, 'locale'),
+)

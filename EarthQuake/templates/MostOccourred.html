@@ -19,7 +19,10 @@
 {% block map %}
     <div id="main">
         {% for a in area %}
-            <div class="area" id="{{ forloop.counter }}">{{ a }}</div>
+            <ul>
+            <li class="area" id="{{ forloop.counter }}">{{ a }} </li>
+            <div class="bar"> </div>
+            </ul>
         {% endfor %}
 
     </div>
